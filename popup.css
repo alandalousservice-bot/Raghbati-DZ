@@ -116,3 +116,4 @@ button{font-family:inherit}
 .log:before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-inline-end:7px}
 
 footer{text-align:center;color:var(--muted);font-size:9.5px;padding:10px 4px 2px;line-height:1.6}
+.app-credit{text-align:center;color:var(--muted);font-size:10px;line-height:1.7;padding:4px 4px 10px}.app-credit strong{display:block;color:var(--seal-dark);font-size:11px}.app-credit span{display:block}

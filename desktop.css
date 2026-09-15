@@ -89,5 +89,6 @@ aside select[multiple]{height:120px}
 .notice[data-error="1"]{background:var(--danger-soft);border-color:var(--danger);color:var(--danger)}
 .progress-meta{display:flex;justify-content:space-between;margin-top:10px;color:var(--seal-dark);font-size:11px}.progress-track{height:9px;margin-top:5px;overflow:hidden;background:#e8eeee;border-radius:6px}.progress-track #progressBar{height:100%;width:0;background:var(--seal);transition:width .25s ease;border-radius:6px}
 hr{border:0;border-top:1px dashed var(--line);margin:16px 0}
+.app-credit{margin-top:16px;padding-top:10px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:10px;line-height:1.7}.app-credit strong{display:block;color:var(--seal-dark);font-size:11px}.app-credit span{display:block}
 
 @media(max-width:800px){.layout{grid-template-columns:280px 1fr}aside{padding:14px}}
