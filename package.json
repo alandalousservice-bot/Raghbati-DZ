@@ -28,13 +28,14 @@
       "manifest.json",
       "mock-platform.html",
       "data/**/*",
-      "README.md"
+      "README.md",
+      "icons/**/*"
     ],
     "win": {
       "target": [
         "nsis"
       ],
-      "icon": ""
+      "icon": "icons/icon.ico"
     },
     "nsis": {
       "oneClick": false,
