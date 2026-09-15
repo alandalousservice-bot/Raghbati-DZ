@@ -28,8 +28,8 @@
       "manifest.json",
       "mock-platform.html",
       "data/**/*",
-      "README.md",
-      "icons/**/*"
+      "icons/**/*",
+      "README.md"
     ],
     "win": {
       "target": [
@@ -43,7 +43,9 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "مساعد الرغبات"
+      "shortcutName": "مساعد الرغبات",
+      "installerIcon": "icons/icon.ico",
+      "uninstallerIcon": "icons/icon.ico"
     }
   },
   "devDependencies": {

@@ -1,1 +1,74 @@
-<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>مساعد الرغبات</title><link rel="stylesheet" href="popup.css"><body><header><h1>مساعد الرغبات</h1><p>اختيار منظم — مراجعة يدوية</p></header><main><section class="card"><h2>تخصص الحساب</h2><div class="grid"><label>الطور<select id="level"><option>ابتدائي</option><option>متوسط</option><option>ثانوي</option></select></label><label>المادة<select id="subject"><option>اللغة العربية</option><option>التربية البدنية والرياضية</option><option>اللغة الفرنسية</option><option>اللغة الإنجليزية</option></select></label><label>العدد المطلوب<input id="minimum" type="number" min="1"></label></div></section><section class="card"><h2>المؤسسات الرئيسية — بالترتيب</h2><label>البلدية<select id="commune"></select></label><div id="institutions" class="institution-list">اختر بلدية</div><button id="addPrimary" class="primary full">إضافة المحدد وترقيمه</button><ol id="primaryList" class="chosen"></ol><button id="runPrimary" class="primary full">تشغيل المؤسسات الرئيسية</button></section><section class="card"><h2>الإكمال العشوائي</h2><label>طريقة الإكمال<select id="fillMode"><option value="chosen">من البلديات التي أحددها</option><option value="auto">اختيار البلديات والمؤسسات تلقائياً</option></select></label><label>البلديات المسموحة / الأولوية<select id="extraCommunes" multiple size="5"></select></label><label class="check"><input id="random" type="checkbox" checked> اختيار المؤسسات عشوائياً</label><button id="runRandom" class="primary full">توليد الإكمال العشوائي</button></section><button id="stop" class="secondary full">إيقاف</button><div id="log" class="log">جاهز — لم تتم إضافة أي مؤسسة.</div><footer>الحفظ والتأكيد يدويان.</footer></main><script src="popup.js"></script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<meta charset="utf-8">
+<title>مساعد الرغبات</title>
+<link rel="icon" href="icons/icon48.png">
+<link rel="stylesheet" href="popup.css">
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="11" r="1.8" fill="currentColor"/><path d="M5.5 16c.6-1.7 1.9-2.5 3-2.5s2.4.8 3 2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 9.5h5M14 12.5h5M14 15.5h3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-rank" viewBox="0 0 24 24"><rect x="3.5" y="13" width="4" height="7" rx="1" fill="currentColor"/><rect x="10" y="9" width="4" height="11" rx="1" fill="currentColor"/><rect x="16.5" y="5" width="4" height="15" rx="1" fill="currentColor"/></symbol>
+  <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M3 6h3.2c1.3 0 2.5.7 3.2 1.8l5.2 8.4c.7 1.1 1.9 1.8 3.2 1.8H21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 6h3.2c1.3 0 2.5.7 3.2 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 18h3.2c1.3 0 2.5-.7 3.2-1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M18.5 3.8 21 6l-2.5 2.2M18.5 20.2 21 18l-2.5-2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4.5v15l14-7.5-14-7.5Z" fill="currentColor"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></symbol>
+  <symbol id="i-marker" viewBox="0 0 24 24"><path d="M12 2c-3.6 0-6.5 2.8-6.5 6.4 0 4.7 6.5 13.6 6.5 13.6s6.5-8.9 6.5-13.6C18.5 4.8 15.6 2 12 2Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="8.4" r="2.2" fill="currentColor"/></symbol>
+</svg>
+
+<header>
+  <div class="brand">
+    <img class="seal" src="icons/icon48.png" alt="">
+    <div>
+      <h1>مساعد الرغبات</h1>
+      <p>اختيار منظم لمؤسسات التوظيف</p>
+    </div>
+  </div>
+  <span class="tag">مراجعة يدوية</span>
+</header>
+
+<main>
+  <section class="card">
+    <h2><svg class="icon"><use href="#i-id"/></svg>تخصص الحساب<span class="step">١</span></h2>
+    <div class="grid">
+      <label>الطور
+        <select id="level"><option>ابتدائي</option><option>متوسط</option><option>ثانوي</option></select>
+      </label>
+      <label>المادة
+        <select id="subject"><option>اللغة العربية</option><option>التربية البدنية والرياضية</option><option>اللغة الفرنسية</option><option>اللغة الإنجليزية</option></select>
+      </label>
+      <label>العدد المطلوب
+        <input id="minimum" type="number" min="1">
+      </label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><svg class="icon"><use href="#i-rank"/></svg>المؤسسات الرئيسية — بالترتيب<span class="step">٢</span></h2>
+    <label>البلدية
+      <select id="commune"></select>
+    </label>
+    <div id="institutions" class="institution-list">اختر بلدية</div>
+    <button id="addPrimary" class="primary full"><svg class="icon"><use href="#i-plus"/></svg>إضافة المحدد وترقيمه</button>
+    <ol id="primaryList" class="chosen"></ol>
+    <button id="runPrimary" class="primary full"><svg class="icon"><use href="#i-play"/></svg>تشغيل المؤسسات الرئيسية</button>
+  </section>
+
+  <section class="card">
+    <h2><svg class="icon"><use href="#i-shuffle"/></svg>الإكمال العشوائي<span class="step">٣</span></h2>
+    <label>طريقة الإكمال
+      <select id="fillMode"><option value="chosen">من البلديات التي أحددها</option><option value="auto">اختيار البلديات والمؤسسات تلقائياً</option></select>
+    </label>
+    <label>البلديات المسموحة / الأولوية
+      <select id="extraCommunes" multiple size="5"></select>
+    </label>
+    <label class="check"><input id="random" type="checkbox" checked><span>اختيار المؤسسات عشوائياً</span></label>
+    <button id="runRandom" class="primary full"><svg class="icon"><use href="#i-shuffle"/></svg>توليد الإكمال العشوائي</button>
+  </section>
+
+  <button id="stop" class="secondary full"><svg class="icon"><use href="#i-stop"/></svg>إيقاف</button>
+  <div id="log" class="log">جاهز — لم تتم إضافة أي مؤسسة.</div>
+  <footer>الحفظ والتأكيد يدويان — لا تُرسَل أي بيانات دون تدخلك.</footer>
+</main>
+<script src="popup.js"></script>
+</body>
+</html>
