@@ -20,6 +20,7 @@
       "desktop-preload.js",
       "desktop.html",
       "desktop-controls.js",
+      "activation.js",
       "desktop.css",
       "content.js",
       "popup.html",
