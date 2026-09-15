@@ -1,16 +1,16 @@
 :root{
-  --paper:#f5f2ea;
-  --surface:#fffdf8;
-  --ink:#182922;
-  --muted:#63705f;
-  --line:#e2d9bd;
-  --seal:#0f5c44;
-  --seal-dark:#0b4432;
-  --gold:#b3873c;
-  --gold-soft:#efdfb6;
-  --danger:#9c3b2e;
-  --danger-soft:#f2ded8;
-  --focus:#b3873c55;
+  --paper:#ffffff;
+  --surface:#ffffff;
+  --ink:#17352d;
+  --muted:#557066;
+  --line:#dce9e4;
+  --seal:#087f5b;
+  --seal-dark:#07563f;
+  --gold:#d8a33e;
+  --gold-soft:#fff4d6;
+  --danger:#c0392b;
+  --danger-soft:#fde4e1;
+  --focus:#c0392b55;
 }
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font-family:'Cairo','Segoe UI',Tahoma,Arial;font-size:14px}
