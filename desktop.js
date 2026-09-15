@@ -1,0 +1,3 @@
+const {app,BrowserWindow,session}=require('electron');const path=require('path');
+function create(){const ses=session.fromPartition('persist:tawdif');ses.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36');const w=new BrowserWindow({width:1400,height:900,webPreferences:{preload:path.join(__dirname,'desktop-preload.js'),contextIsolation:true,nodeIntegration:false,webviewTag:true,session:ses}});w.loadFile(path.join(__dirname,'desktop.html'));return w}
+app.whenReady().then(()=>{create();app.on('activate',()=>BrowserWindow.getAllWindows().length||create())});app.on('window-all-closed',()=>process.platform!=='darwin'&&app.quit());

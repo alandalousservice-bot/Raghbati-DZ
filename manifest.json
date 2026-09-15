@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "مساعد ترتيب الرغبات - توظيف",
+  "version": "0.1.0",
+  "description": "يساعد على إضافة وترتيب المؤسسات دون الحفظ أو التأكيد تلقائياً.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://concours.onec.dz/*", "http://localhost/*"],
+  "action": {"default_popup": "popup.html"},
+  "content_scripts": [{"matches": ["https://concours.onec.dz/candidate/choises*", "http://localhost/*"], "js": ["content.js"], "run_at": "document_idle"}]
+}

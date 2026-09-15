@@ -1,0 +1,53 @@
+{
+  "name": "tawdif-desktop",
+  "version": "0.1.0",
+  "description": "مساعد ترتيب رغبات منصة توظيف الأساتذة",
+  "main": "desktop.js",
+  "author": "Tawdif",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "pack": "electron-builder --dir"
+  },
+  "build": {
+    "appId": "dz.tawdif.assistant",
+    "productName": "مساعد الرغبات",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop.js",
+      "desktop-preload.js",
+      "desktop.html",
+      "desktop-controls.js",
+      "desktop.css",
+      "content.js",
+      "popup.html",
+      "popup.js",
+      "popup.css",
+      "manifest.json",
+      "mock-platform.html",
+      "data/**/*",
+      "README.md"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": ""
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "مساعد الرغبات"
+    }
+  },
+  "devDependencies": {
+    "app-builder-bin": "^5.0.0-alpha.10",
+    "electron": "^32.0.0",
+    "electron-builder": "^25.1.8"
+  }
+}
