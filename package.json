@@ -6,7 +6,9 @@
   "author": "Tawdif",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win nsis",
+    "dist": "npm run dist:x64 && npm run dist:x86",
+    "dist:x64": "electron-builder --win nsis --x64",
+    "dist:x86": "electron-builder --win nsis --ia32",
     "pack": "electron-builder --dir"
   },
   "build": {
@@ -51,7 +53,7 @@
   },
   "devDependencies": {
     "app-builder-bin": "^5.0.0-alpha.10",
-    "electron": "^32.0.0",
+    "electron": "22.3.27",
     "electron-builder": "^25.1.8"
   }
 }
