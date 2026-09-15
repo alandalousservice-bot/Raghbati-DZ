@@ -69,6 +69,8 @@ aside select[multiple]{height:120px}
 .institution-option:last-child{border-bottom:0}
 .institution-option:hover{background:#efe9d6}
 .institution-option input{width:auto;margin:0;accent-color:var(--seal)}
+.institution-option.tawdif-picked{background:#9c3b2e22;border-inline-start:3px solid var(--danger);color:var(--danger)}
+.tawdif-added-row{background:#9c3b2e33!important;transition:background .2s ease}
 
 .chosen{list-style:none;margin:8px 0 0;padding:0;max-height:150px;overflow:auto}
 .chosen li{
